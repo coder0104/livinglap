@@ -1141,5 +1141,11 @@ button:focus:not(:focus-visible) {
   .full-image-img {
     bottom: 0;
   }
+  #userwrapper{
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+  }
 }
 
+@media screen and (max-width: 600px) {
+}

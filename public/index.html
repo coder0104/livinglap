@@ -29,7 +29,7 @@
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/slick.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link href="css/tooplate-little-fashion.css" rel="stylesheet" />
     <!--
 
@@ -38,6 +38,19 @@ Tooplate 2127 Little Fashion
 https://www.tooplate.com/view/2127-little-fashion
 
 -->
+    <style>
+      @media (max-width: 992px) {
+        .userwrapper {
+          margin-top: 0.9rem!important;
+          margin-left: 1.5rem!important;
+        }
+        .navbar-brand{
+          text-align: center!important;
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -55,6 +68,7 @@ https://www.tooplate.com/view/2127-little-fashion
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-database.js"></script>
 
     <section class="preloader">
       <div class="spinner">
@@ -81,16 +95,6 @@ https://www.tooplate.com/view/2127-little-fashion
             <strong class="fs-2">폐의약품 처리</strong>
           </a>
 
-          <div class="d-lg-none">
-            <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
-
-            <a
-              href="logout.html"
-              class="bi bi-box-arrow-right"
-              style="font-size: 1.4rem"
-            ></a>
-          </div>
-
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
@@ -113,19 +117,20 @@ https://www.tooplate.com/view/2127-little-fashion
                 <a class="nav-link fs-4" id="deleteuser">계정 삭제</a>
               </li>
             </ul>
-
-            <div class="d-none d-lg-block">
-              <h3 id="useremail">로그인되지 않았습니다.</h3>
-
-              <a href="sign-in.html" class="bi-person custom-icon me-3"
-                >&nbsp;로그인</a
+            <div class="d-lg-flex userwrapper" id="userwrapper">
+              <a
+                id="loogout"
+                class="bi bi-box-arrow-right loogout"
+                style="font-size: 1.4rem"
+                >&nbsp;로그아웃</a
               >
 
               <a
-                id="loogout"
-                class="bi bi-box-arrow-right"
-                style="font-size: 1.4rem; position: absolute"
-                >&nbsp;로그아웃</a
+                id="loginbtn"
+                href="sign-in.html"
+                class="bi-person custom-icon me-3 loogin"
+                style="margin-left: 1rem"
+                >&nbsp;로그인</a
               >
             </div>
           </div>
@@ -529,6 +534,31 @@ https://www.tooplate.com/view/2127-little-fashion
       };
       firebase.initializeApp(firebaseConfig);
 
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          const uid = user.uid;
+          const db = firebase.database();
+
+          db.ref(`users/${uid}`)
+            .once("value")
+            .then((snapshot) => {
+              const userData = snapshot.val();
+              $("#userwrapper")
+                .append(`<div id="logined" style="display: flex; margin: 0 auto; margin-left: 1rem;">
+  
+                <h4 id="useremail" style="color: rgb(66, 66, 66); font-size: 1.4rem;">${userData.name}</h4>
+                <h4 style="color: rgb(66, 66, 66); font-size: 1.4rem;">&nbsp;님</h4>
+              </div>`);
+              $("#loginbtn").remove();
+            })
+            .catch((error) => {
+              console.error("Error fetching user data:", error);
+            });
+        } else {
+          console.log("No user is signed in.");
+        }
+      });
+
       $("#deleteuser").click(function () {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
@@ -536,7 +566,7 @@ https://www.tooplate.com/view/2127-little-fashion
               .delete()
               .then(() => {
                 console.log("User deleted successfully");
-                location.href = '/index.html'
+                location.href = "/index.html";
               })
               .catch((error) => {
                 console.error("Error deleting user:", error);
@@ -549,7 +579,6 @@ https://www.tooplate.com/view/2127-little-fashion
 
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          $("#useremail").html(user.email);
         } else {
           // 로그인된 사용자가 없는 경우
           console.log("No user is logged in.");
@@ -561,9 +590,14 @@ https://www.tooplate.com/view/2127-little-fashion
           .auth()
           .signOut()
           .then(function () {
+            $(
+              "#userwrapper"
+            ).append(`<a id="loginbtn" href="sign-in.html" class="bi-person custom-icon me-3 " style="margin-left: 1rem;"
+                >&nbsp;로그인</a
+              >`);
+            $("#logined").remove();
             //alert("로그아웃 되었습니다")
-            //메인 페이지로 이동시키고 세션 저장시키기
-            window.location.href = "/index.html";
+            //메인 페이지로 이동시키고 세션 저장시키기/
           })
           .catch(function (error) {
             if (error) {
