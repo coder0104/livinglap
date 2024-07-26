@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>로그인 페이지</title>
+
+        <!-- CSS FILES -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        
+<!--
+
+Tooplate 2127 Little Fashion
+
+https://www.tooplate.com/view/2127-little-fashion
+
+-->
+    </head>
+    
+    <body>
+
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+        <section class="preloader">
+            <div class="spinner">
+                <span class="sk-inner-circle"></span>
+            </div>
+        </section>
+
+        <main>
+
+            <section class="sign-in-form section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 mx-auto col-12">
+
+                            <h1 class="hero-title text-center mb-5">로그인</h1>
+
+                            <div class="row">
+                                <div class="col-lg-8 col-11 mx-auto">
+                                    <form role="form" method="post">
+
+                                        <div class="form-floating mb-4 p-0">
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required>
+
+                                            <label for="email">이메일</label>
+                                        </div>
+
+                                        <div class="form-floating p-0">
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+
+                                            <label for="password">비밀번호</label>
+                                        </div>
+
+                                        <button type="button" onclick="login()" " class="btn custom-btn form-control mt-4 mb-3">
+                                            로그인
+                                        </button>
+
+                                        <p class="text-center">계정이 없으신가요? <a href="sign-up.html">계정 만들기</a></p>
+
+                                    </form>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-10 me-auto mb-4">
+                        <h4 class="text-white mb-3"><a href="index.html">폐의약품</a></h4>
+                    </div>
+
+                    <div class="col-lg-5 col-8">
+                        <h5 class="text-white mb-3">사이트맵</h5>
+
+                        <ul class="footer-menu d-flex flex-wrap">
+
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">제품</a></li>
+
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">개인정보 정책</a></li>
+
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">FAQ</a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-4">
+                        <h5 class="text-white mb-3">소셜</h5>
+
+                        <ul class="social-icon">
+
+                            <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/Headroom.js"></script>
+        <script src="js/jQuery.headroom.js"></script>
+        <script src="js/slick.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyCg0Cl6lIajKPUXgnZKCcF6eok8vzXkJ_E",
+                authDomain: "livinlap.firebaseapp.com",
+                databaseURL: "https://livinlap-default-rtdb.firebaseio.com",
+                projectId: "livinlap",
+                storageBucket: "livinlap.appspot.com",
+                messagingSenderId: "572384266053",
+                appId: "1:572384266053:web:d205255bcb05fcf578602c",
+                measurementId: "G-K1F81N4YET"
+            };
+            firebase.initializeApp(firebaseConfig);
+
+            const auth = firebase.auth();
+
+            function login() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            location.href = "index.html"
+        })
+        .catch((error) => {
+            alert('로그인 실패');
+        });
+}
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>폐의약품 처리</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap-icons.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/slick.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="css/tooplate-little-fashion.css" rel="stylesheet" />
+    <!--
+
+Tooplate 2127 Little Fashion
+
+https://www.tooplate.com/view/2127-little-fashion
+
+-->
+  </head>
+
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+    <section class="preloader">
+      <div class="spinner">
+        <span class="sk-inner-circle"></span>
+      </div>
+    </section>
+
+    <main>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <a class="navbar-brand" href="index.html">
+            <strong class="fs-2">폐의약품 처리</strong>
+          </a>
+
+          <div class="d-lg-none">
+            <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
+
+            <a
+              href="logout.html"
+              class="bi bi-box-arrow-right"
+              style="font-size: 1.4rem"
+            ></a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active fs-4" href="index.html">홈</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-4" href="products.html">제품</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-4" href="faq.html">FAQ</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-4" href="contact.html">협업 문의</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-4" id="deleteuser">계정 삭제</a>
+              </li>
+            </ul>
+
+            <div class="d-none d-lg-block">
+              <h3 id="useremail">로그인되지 않았습니다.</h3>
+
+              <a href="sign-in.html" class="bi-person custom-icon me-3"
+                >&nbsp;로그인</a
+              >
+
+              <a
+                id="loogout"
+                class="bi bi-box-arrow-right"
+                style="font-size: 1.4rem; position: absolute"
+                >&nbsp;로그아웃</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <section class="slick-slideshow">
+        <div class="slick-custom">
+          <img
+            src="https://i.namu.wiki/i/EahcBcAOmWJO_o_fwwfTbwlO8nCw3SewYZOqTgx3KxDrKEpAfLcGb_Kz4F7vwA9SzO48CFPx50uadUjVMO9mUw.webp"
+            style="width: 50%"
+            class="img-fluid"
+            alt=""
+          />
+
+          <div class="slick-bottom">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 col-10">
+                  <h1 class="slick-title">내용1</h1>
+
+                  <p class="lead text-white mt-lg-3 mb-lg-5">대체 텍스트.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slick-custom">
+          <img
+            src="https://i.namu.wiki/i/EahcBcAOmWJO_o_fwwfTbwlO8nCw3SewYZOqTgx3KxDrKEpAfLcGb_Kz4F7vwA9SzO48CFPx50uadUjVMO9mUw.webp"
+            style="width: 50%"
+            class="img-fluid"
+            alt=""
+          />
+
+          <div class="slick-bottom">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 col-10">
+                  <h1 class="slick-title">내용2</h1>
+
+                  <p class="lead text-white mt-lg-3 mb-lg-5">대체 텍스트</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slick-custom">
+          <img
+            src="https://i.namu.wiki/i/EahcBcAOmWJO_o_fwwfTbwlO8nCw3SewYZOqTgx3KxDrKEpAfLcGb_Kz4F7vwA9SzO48CFPx50uadUjVMO9mUw.webp"
+            class="img-fluid"
+            style="width: 50%"
+            alt=""
+          />
+
+          <div class="slick-bottom">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-6 col-10">
+                  <h1 class="slick-title">내용3</h1>
+
+                  <p class="lead text-white mt-lg-3 mb-lg-5">대체 텍스트.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2 class="mb-5">
+                <span>작은 </span>실천으로 큰 결과를 만들어낼 수 있습니다.
+              </h2>
+            </div>
+
+            <div class="col-lg-2 col-12 mt-auto mb-auto">
+              <ul
+                class="nav nav-pills mb-5 mx-auto justify-content-center align-items-center"
+                id="pills-tab"
+                role="tablist"
+              >
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="pills-home-tab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#pills-home"
+                    type="button"
+                    role="tab"
+                    aria-controls="pills-home"
+                    aria-selected="true"
+                  >
+                    소개
+                  </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="pills-youtube-tab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#pills-youtube"
+                    type="button"
+                    role="tab"
+                    aria-controls="pills-youtube"
+                    aria-selected="true"
+                  >
+                    작용
+                  </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="pills-skill-tab"
+                    data-bs-toggle="pill"
+                    data-bs-target="#pills-skill"
+                    type="button"
+                    role="tab"
+                    aria-controls="pills-skill"
+                    aria-selected="false"
+                  >
+                    기능
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-lg-10 col-12">
+              <div class="tab-content mt-2" id="pills-tabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="pills-home"
+                  role="tabpanel"
+                  aria-labelledby="pills-home-tab"
+                >
+                  <div class="row">
+                    <div class="col-lg-7 col-12">
+                      <img
+                        src="https://biz.chosun.com/resizer/whd6o09PPsGcTTCxVOoLhvtf0vw=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/L64JHK674CX4VRNSSAJDQ5OCLE.png"
+                        class="img-fluid"
+                        alt=""
+                      />
+                    </div>
+
+                    <div class="col-lg-5 col-12">
+                      <div
+                        class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5"
+                      >
+                        <h4 class="mb-3">
+                          츄 <span>예쁘다</span> <br />검정색
+                          <span>빨간색</span> 검정색
+                        </h4>
+
+                        <p>
+                          대체 텍스트. <a href="sign-in.html">sign in</a> /
+                          <a href="sign-up.html">sign up</a>
+                        </p>
+
+                        <p>
+                          HTML CSS JAVASCRIPT 기본적인 기능과 FIREBASE를 통한
+                          계발 예정
+                        </p>
+
+                        <div class="mt-2 mt-lg-auto">
+                          <a href="about.html" class="custom-link mb-2 fs-5">
+                            더 알아보기 ->
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-youtube"
+                  role="tabpanel"
+                  aria-labelledby="pills-youtube-tab"
+                >
+                  <div class="row">
+                    <div class="col-lg-7 col-12">
+                      <div class="ratio ratio-16x9">
+                        <iframe
+                          width="560"
+                          height="315"
+                          src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=hoQF-HkTVd8f0Jtx"
+                          title="YouTube video player"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerpolicy="strict-origin-when-cross-origin"
+                          allowfullscreen
+                        ></iframe>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-5 col-12">
+                      <div
+                        class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5"
+                      >
+                        <h4 class="mb-3">대체 텍스트.</h4>
+
+                        <p>대체 텍스트.</p>
+
+                        <p>
+                          HTML CSS JAVASCRIPT 기본적인 기능과 FIREBASE를 통한
+                          계발 예정
+                        </p>
+
+                        <div class="mt-2 mt-lg-auto">
+                          <a href="contact.html" class="custom-link mb-2 fs-5">
+                            협업 문의 ->
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="pills-skill"
+                  role="tabpanel"
+                  aria-labelledby="pills-skill-tab"
+                >
+                  <div class="row">
+                    <div class="col-lg-7 col-12">
+                      <img
+                        src="https://bizon.kookmin.ac.kr/files/editor/1442382140703.png"
+                        class="img-fluid"
+                        alt=""
+                      />
+                    </div>
+
+                    <div class="col-lg-5 col-12">
+                      <div
+                        class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5"
+                      >
+                        <h4 class="mb-3">니가 뭘 할수있는데?</h4>
+
+                        <p>
+                          HTML CSS JAVASCRIPT 기본적인 기능과 FIREBASE를 통한
+                          계발 예정
+                        </p>
+
+                        <div class="mt-2 mt-lg-auto">
+                          <a href="products.html" class="custom-link mb-2 fs-5">
+                            장치 보러가기 ->
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="front-product">
+        <div class="container-fluid p-0">
+          <div class="row align-items-center p-5">
+            <div class="col-lg-6 col-12">
+              <img
+                src="https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202403/09/21e88381-7867-410a-b0c3-5d6c9cd430b1.jpg"
+                class="img-fluid"
+                alt=""
+              />
+            </div>
+
+            <div class="col-lg-6 col-12">
+              <div class="px-5 py-5 py-lg-0 p-5">
+                <h2 class="mb-4"><span>카리나</span> 예쁘다</h2>
+
+                <p class="lead mb-4">
+                  전세계 사람들에게 자신이 믿는 신의 이름을 묻자 '예수', '알라'
+                  등 여러 이름이 나왔다. 세상에 70억명의 카리나 팬이 있다면,
+                  나는 그들 중 한 명일 것이다. 세상에 1억명의 카리나 팬이
+                  있다면., 나 또한 그들 중 한 명일 것이다. 세상에 천만명의
+                  카리나 팬이 있다면, 나는 여전히 그들 중 한 명일 것이다. 세상에
+                  백 명의 카리나 팬이 있다면, 나는 아직도 그들 중 한 명일
+                  것이다. 세상에 한 명의 카리나 팬이 있다면, 그 사람은 아마도
+                  나일 것이다. 세상에 단 한 명의 카리나 팬도 없다면, 나는
+                  그제서야 이 세상에 없는 것이다.카리나, 나의 사랑. 카리나, 나의
+                  빛. 카리나, 나의 어둠. 카리나, 나의 삶. 카리나, 나의 기쁨.
+                  카리나, 나의 슬픔. 카리나, 나의 고통. 카리나, 나의 안식.
+                </p>
+
+                <a href="products.html" class="custom-link fs-5 pb-2">
+                  제품 보러가기 ->
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured-product section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2 class="mb-5">제품</h2>
+            </div>
+
+            <div class="col-lg-4 col-12 mb-3"></div>
+
+            <div class="col-lg-4 col-12 mb-3">
+              <div class="product-thumb">
+                <a href="product-detail.html">
+                  <img
+                    src="https://i.namu.wiki/i/EahcBcAOmWJO_o_fwwfTbwlO8nCw3SewYZOqTgx3KxDrKEpAfLcGb_Kz4F7vwA9SzO48CFPx50uadUjVMO9mUw.webp"
+                    class="img-fluid product-image"
+                    alt=""
+                  />
+                </a>
+
+                <div class="product-info d-flex">
+                  <div>
+                    <h5 class="product-title mb-0">
+                      <a href="" class="product-title-link">우리 물건</a>
+                    </h5>
+
+                    <p class="product-p">무울건</p>
+                  </div>
+
+                  <small class="product-price text-muted ms-auto mt-auto mb-5"
+                    >₩100</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-10 me-auto mb-4">
+            <h4 class="text-white mb-3">
+              <a href="index.html">폐의약품 처리</a>
+            </h4>
+          </div>
+
+          <div class="col-lg-5 col-8">
+            <h5 class="text-white mb-3">사이트맵</h5>
+
+            <ul class="footer-menu d-flex flex-wrap">
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">제품</a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">개인정보 정책</a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">FAQ</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-4">
+            <h5 class="text-white mb-3">소셜</h5>
+
+            <ul class="social-icon">
+              <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+
+              <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/custom.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCg0Cl6lIajKPUXgnZKCcF6eok8vzXkJ_E",
+        authDomain: "livinlap.firebaseapp.com",
+        databaseURL: "https://livinlap-default-rtdb.firebaseio.com",
+        projectId: "livinlap",
+        storageBucket: "livinlap.appspot.com",
+        messagingSenderId: "572384266053",
+        appId: "1:572384266053:web:d205255bcb05fcf578602c",
+        measurementId: "G-K1F81N4YET",
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      $("#deleteuser").click(function () {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            user
+              .delete()
+              .then(() => {
+                console.log("User deleted successfully");
+                location.href = '/index.html'
+              })
+              .catch((error) => {
+                console.error("Error deleting user:", error);
+              }); // 사용자 삭제 시도
+          } else {
+            console.log("No user is logged in.");
+          }
+        });
+      });
+
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          $("#useremail").html(user.email);
+        } else {
+          // 로그인된 사용자가 없는 경우
+          console.log("No user is logged in.");
+        }
+      });
+
+      $("#loogout").click(function () {
+        firebase
+          .auth()
+          .signOut()
+          .then(function () {
+            //alert("로그아웃 되었습니다")
+            //메인 페이지로 이동시키고 세션 저장시키기
+            window.location.href = "/index.html";
+          })
+          .catch(function (error) {
+            if (error) {
+              alert("로그인 실패");
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
