@@ -10,6 +10,13 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+const toggleButton = document.querySelector('.toggle-button');
+const navbarLinks = document.querySelector('.navbar-links');
+
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active');
+});
+
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     if (user.emailVerified) {

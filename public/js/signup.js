@@ -42,7 +42,7 @@ document
           });
         })
         .catch((error) => {
-          console.error("오류:", error.message);
+          alert("오류:", error.message);
         });
     } else {
       document.getElementById("wrongtxtwrap").innerHTML = wrongtext;
@@ -57,6 +57,7 @@ function checkEmailVerification(user, 이름) {
       .set({
         email: user.email,
         name: 이름,
+        point: 0,
       })
       .then(() => {
         console.log(

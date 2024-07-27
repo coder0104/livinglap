@@ -7,9 +7,26 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>폐의약품 처리</title>
+    <title>메디클린</title>
 
     <!-- CSS FILES -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -25,7 +42,6 @@
       rel="stylesheet"
     />
 
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/bootstrap-icons.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="css/slick.css" />
@@ -50,6 +66,14 @@ https://www.tooplate.com/view/2127-little-fashion
           margin: 0 auto;
         }
       }
+
+      .navbar-links {
+        display: none;
+      }
+
+      .navbar-links.active {
+        display: block;
+      }
     </style>
   </head>
 
@@ -60,8 +84,13 @@ https://www.tooplate.com/view/2127-little-fashion
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
@@ -92,7 +121,7 @@ https://www.tooplate.com/view/2127-little-fashion
           </button>
 
           <a class="navbar-brand" href="index.html">
-            <strong class="fs-2">폐의약품 처리</strong>
+            <strong class="fs-2">메디클린</strong>
           </a>
 
           <div class="collapse navbar-collapse" id="navbarNav">
@@ -115,6 +144,12 @@ https://www.tooplate.com/view/2127-little-fashion
 
               <li class="nav-item">
                 <a class="nav-link fs-4" id="deleteuser">계정 삭제</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fs-4" id="deleteuser" href="mypage.html"
+                  >마이페이지</a
+                >
               </li>
             </ul>
             <div class="d-lg-flex userwrapper" id="userwrapper">
@@ -140,8 +175,8 @@ https://www.tooplate.com/view/2127-little-fashion
       <section class="slick-slideshow">
         <div class="slick-custom">
           <img
-            src="https://i.namu.wiki/i/EahcBcAOmWJO_o_fwwfTbwlO8nCw3SewYZOqTgx3KxDrKEpAfLcGb_Kz4F7vwA9SzO48CFPx50uadUjVMO9mUw.webp"
-            style="width: 50%"
+            src="https://www.econlib.org/wp-content/uploads/2018/05/recycling-2.jpg"
+            style="width: 100%"
             class="img-fluid"
             alt=""
           />
@@ -150,9 +185,11 @@ https://www.tooplate.com/view/2127-little-fashion
             <div class="container">
               <div class="row">
                 <div class="col-lg-6 col-10">
-                  <h1 class="slick-title">내용1</h1>
+                  <h1 class="slick-title">재활용</h1>
 
-                  <p class="lead text-white mt-lg-3 mb-lg-5">대체 텍스트.</p>
+                  <p class="lead text-white mt-lg-3 mb-lg-5">
+                    재활용은 정말 멋져요!
+                  </p>
                 </div>
               </div>
             </div>
@@ -161,8 +198,8 @@ https://www.tooplate.com/view/2127-little-fashion
 
         <div class="slick-custom">
           <img
-            src="https://i.namu.wiki/i/EahcBcAOmWJO_o_fwwfTbwlO8nCw3SewYZOqTgx3KxDrKEpAfLcGb_Kz4F7vwA9SzO48CFPx50uadUjVMO9mUw.webp"
-            style="width: 50%"
+            src="https://media.rnztools.nz/rnz/image/upload/s--rijl0La5--/c_scale,f_auto,q_auto,w_1050/v1643546456/4NHXXO6_image_crop_73073"
+            style="width: 100%"
             class="img-fluid"
             alt=""
           />
@@ -171,9 +208,11 @@ https://www.tooplate.com/view/2127-little-fashion
             <div class="container">
               <div class="row">
                 <div class="col-lg-6 col-10">
-                  <h1 class="slick-title">내용2</h1>
+                  <h1 class="slick-title">폐의약품</h1>
 
-                  <p class="lead text-white mt-lg-3 mb-lg-5">대체 텍스트</p>
+                  <p class="lead text-white mt-lg-3 mb-lg-5">
+                    폐의약품은 모르겠어요!
+                  </p>
                 </div>
               </div>
             </div>
@@ -182,9 +221,9 @@ https://www.tooplate.com/view/2127-little-fashion
 
         <div class="slick-custom">
           <img
-            src="https://i.namu.wiki/i/EahcBcAOmWJO_o_fwwfTbwlO8nCw3SewYZOqTgx3KxDrKEpAfLcGb_Kz4F7vwA9SzO48CFPx50uadUjVMO9mUw.webp"
+            src="https://img.hankyung.com/photo/202406/01.37133288.1.jpg"
             class="img-fluid"
-            style="width: 50%"
+            style="width: 100%"
             alt=""
           />
 
@@ -192,9 +231,11 @@ https://www.tooplate.com/view/2127-little-fashion
             <div class="container">
               <div class="row">
                 <div class="col-lg-6 col-10">
-                  <h1 class="slick-title">내용3</h1>
+                  <h1 class="slick-title">대전시</h1>
 
-                  <p class="lead text-white mt-lg-3 mb-lg-5">대체 텍스트.</p>
+                  <p class="lead text-white mt-lg-3 mb-lg-5">
+                    대전광역시에서 할꺼임
+                  </p>
                 </div>
               </div>
             </div>
@@ -275,7 +316,7 @@ https://www.tooplate.com/view/2127-little-fashion
                   <div class="row">
                     <div class="col-lg-7 col-12">
                       <img
-                        src="https://biz.chosun.com/resizer/whd6o09PPsGcTTCxVOoLhvtf0vw=/616x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/L64JHK674CX4VRNSSAJDQ5OCLE.png"
+                        src="https://media.rnztools.nz/rnz/image/upload/s--rijl0La5--/c_scale,f_auto,q_auto,w_1050/v1643546456/4NHXXO6_image_crop_73073"
                         class="img-fluid"
                         alt=""
                       />
@@ -286,25 +327,21 @@ https://www.tooplate.com/view/2127-little-fashion
                         class="d-flex flex-column h-100 ms-lg-4 mt-lg-0 mt-5"
                       >
                         <h4 class="mb-3">
-                          츄 <span>예쁘다</span> <br />검정색
-                          <span>빨간색</span> 검정색
+                          <span>폐</span>의약품 <br />알약은
+                          <span>재활용</span> 하세요
                         </h4>
 
                         <p>
-                          대체 텍스트. <a href="sign-in.html">sign in</a> /
-                          <a href="sign-up.html">sign up</a>
+                          대체 텍스트. <a href="sign-in.html">로그인</a> /
+                          <a href="sign-up.html">회원가입</a>
                         </p>
 
                         <p>
                           HTML CSS JAVASCRIPT 기본적인 기능과 FIREBASE를 통한
-                          계발 예정
+                          개발 예정
                         </p>
 
-                        <div class="mt-2 mt-lg-auto">
-                          <a href="about.html" class="custom-link mb-2 fs-5">
-                            더 알아보기 ->
-                          </a>
-                        </div>
+                        <div class="mt-2 mt-lg-auto"></div>
                       </div>
                     </div>
                   </div>
@@ -478,7 +515,7 @@ https://www.tooplate.com/view/2127-little-fashion
         <div class="row">
           <div class="col-lg-3 col-10 me-auto mb-4">
             <h4 class="text-white mb-3">
-              <a href="index.html">폐의약품 처리</a>
+              <a href="index.html">메디클린</a>
             </h4>
           </div>
 
